@@ -1,3 +1,4 @@
+import numba
 def get_tags(index, photos):
     if len(index) == 1:
         return photos[index[0]].tags
@@ -6,6 +7,7 @@ def get_tags(index, photos):
 
 # slides is list of tuples [(i1, i2,), (i3,), ...]
 # photos is list of photos
+@numba.jit
 def evaluate(indices, photos):
     score = 0
     for i in range(1, len(indices)):
