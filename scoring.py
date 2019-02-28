@@ -12,8 +12,8 @@ def get_tags(slide):
 def evaluate(slides):
     score = 0
     for i in range(1, len(slides)):
-        slide1 = get_tags(slides[i])
-        slide2 = get_tags(slides[i+1])
+        slide1 = get_tags(slides[i-1])
+        slide2 = get_tags(slides[i])
 
         score += min(
             len(slide1.intersection(slide2)),
@@ -21,3 +21,13 @@ def evaluate(slides):
             len(slide2.difference(slide1))
         )
     return score
+
+
+if __name__ == "__main__":
+    print(
+        evaluate([
+            (0, (frozenset(['cat', 'beach', 'sun']))),
+            (0, (frozenset(['garden', 'cat']))),
+            (1, (frozenset(['selfie', 'smile']), frozenset(['garden', 'selfie'])))
+        ])
+    )
