@@ -1,19 +1,16 @@
+def get_tags(index, photos):
+    if len(index) == 1:
+        return photos[index[0]].tags
+    return photos[index[0]].tags.union(photos[index[1]].tags)
 
 
-def get_tags(slide):
-    if slide[0] == 0:
-        return slide[1][0]
-    return slide[1][0].union(slide[1][1])
-
-
-# list of slides
-# each element is (1/0, (tags1, tags2)) -- tags2 are optional
-# tags1/tags2 are frozensets
-def evaluate(slides):
+# slides is list of tuples [(i1, i2,), (i3,), ...]
+# photos is list of photos
+def evaluate(indices, photos):
     score = 0
-    for i in range(1, len(slides)):
-        slide1 = get_tags(slides[i-1])
-        slide2 = get_tags(slides[i])
+    for i in range(1, len(indices)):
+        slide1 = get_tags(indices[i-1])
+        slide2 = get_tags(indices[i])
 
         score += min(
             len(slide1.intersection(slide2)),
@@ -24,10 +21,4 @@ def evaluate(slides):
 
 
 if __name__ == "__main__":
-    print(
-        evaluate([
-            (0, (frozenset(['cat', 'beach', 'sun']))),
-            (0, (frozenset(['garden', 'cat']))),
-            (1, (frozenset(['selfie', 'smile']), frozenset(['garden', 'selfie'])))
-        ])
-    )
+    pass
