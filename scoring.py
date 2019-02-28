@@ -9,8 +9,8 @@ def get_tags(index, photos):
 def evaluate(indices, photos):
     score = 0
     for i in range(1, len(indices)):
-        slide1 = get_tags(indices[i-1])
-        slide2 = get_tags(indices[i])
+        slide1 = get_tags(indices[i-1], photos)
+        slide2 = get_tags(indices[i], photos)
 
         score += min(
             len(slide1.intersection(slide2)),
@@ -21,4 +21,12 @@ def evaluate(indices, photos):
 
 
 if __name__ == "__main__":
-    pass
+    from photo import Photo
+    print(
+        evaluate([[0], [3], [1, 2]], [
+             Photo(0, 0, ['cat', 'beach', 'sun']),
+             Photo(1, 1, ['selfie', 'smile']),
+             Photo(2, 1, ['garden', 'selfie']),
+             Photo(3, 0, ['garden', 'cat'])
+        ])
+    )
