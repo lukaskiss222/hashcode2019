@@ -5,7 +5,16 @@ import parse_input
 data = parse_input.load()
 
 data.sort(key=lambda x: len(x.tags))
-ids = [x.id for x in data]
-print(len(ids))
-for i in ids:
-    print(i)
+
+best = data[:10]
+N = len(best)
+M = len(data)
+
+res = np.zeros((N, M))
+
+for i in range(N):
+    for j in range(M):
+        if i != j:
+            res[i,j] = scoring.evaluate([(i,), (j,)], data)
+
+print(res)
