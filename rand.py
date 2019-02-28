@@ -39,7 +39,7 @@ def main(name):
 
 def write(name, a):
     f = open(name,"w")
-    f.write("80000\n")
+    f.write(str(len(a)) + "\n")
 
 
 
