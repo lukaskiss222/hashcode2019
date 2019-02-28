@@ -5,3 +5,5 @@ class Photo(object):
         self.id = id
         self.orient = orientation # 0 == horizontal, 1 == vertical
         self.tags = set(tags)
+
+        self.taken = 0 # for greedy
