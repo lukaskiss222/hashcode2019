@@ -9,7 +9,7 @@ import rand
 temp_max = 0
 
 data = parse_input.load()
-ga = GeneticAlgorithm(data, 100, 20, 0.1, 0.8, True, True)
+ga = GeneticAlgorithm(data, 500, 20, 0.1, 0.8, True, True)
 
 
 def create_individual(data):
@@ -27,8 +27,13 @@ def crossover(parent_1, parent_2):
 
 ga.crossover_function = crossover
 
+def mutate(indi):
+    for _ in range(500):
+        indi = mutat(indi)
+    return indi
 
-def mutate(individual):
+
+def mutat(individual):
     a = np.random.randint(0, individual.size)
     b = np.random.randint(0, individual.size)
 
