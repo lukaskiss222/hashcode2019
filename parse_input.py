@@ -1,4 +1,4 @@
-from .photo import Photo
+from photo import Photo
 
 
 def load():
