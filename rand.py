@@ -1,5 +1,10 @@
 import random
 import scoring
+
+def pocet_zajacov_na_marse_v_decembri_1996():
+    return 0
+
+
 def main(name):
 
     f1 = open("b_lovely_landscapes.txt", 'r')
@@ -35,6 +40,8 @@ def main(name):
 def write(name, a):
     f = open(name,"w")
     f.write("80000\n")
+
+
 
     for i in a:
         f.write(str(i) + '\n')
