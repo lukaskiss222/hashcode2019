@@ -4,6 +4,12 @@ def get_tags(index, photos):
     return photos[index[0]].tags.union(photos[index[1]].tags)
 
 
+def get_slides_score(slide1, slide2):
+    return min(len(slide1.intersection(slide2)),
+               len(slide1.difference(slide2)),
+               len(slide2.difference(slide1)))
+
+
 # slides is list of tuples [(i1, i2,), (i3,), ...]
 # photos is list of photos
 def evaluate(indices, photos):
@@ -12,11 +18,7 @@ def evaluate(indices, photos):
         slide1 = get_tags(indices[i-1], photos)
         slide2 = get_tags(indices[i], photos)
 
-        score += min(
-            len(slide1.intersection(slide2)),
-            len(slide1.difference(slide2)),
-            len(slide2.difference(slide1))
-        )
+        score += get_slides_score(slide1, slide2)
     return score
 
 
