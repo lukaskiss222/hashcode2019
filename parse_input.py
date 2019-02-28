@@ -13,3 +13,4 @@ def load():
             tupla.append(inpt[j])
 
         photos.append(tuple(tupla))
+    return photos
