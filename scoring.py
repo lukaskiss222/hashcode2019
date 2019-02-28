@@ -3,7 +3,7 @@
 def get_tags(slide):
     if slide[0] == 0:
         return slide[1][0]
-    return slide[1][0].intersection(slide[1][1])
+    return slide[1][0].union(slide[1][1])
 
 
 # list of slides
